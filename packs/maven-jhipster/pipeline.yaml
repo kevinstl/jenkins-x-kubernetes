@@ -6,6 +6,8 @@ pipelines:
       stages:
       - name: build
         steps:
+        - sh: mvn clean deploy
+          name: mvn-deploy
         options:
           containerOptions:
             resources:
