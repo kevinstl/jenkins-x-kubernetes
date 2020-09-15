@@ -1,5 +1,9 @@
 extends:
   file: ../maven/pipeline.yaml
+agent:
+  label: jenkins-maven
+  image: maven
+  container: maven
 pipelines:
   release:
     pipeline:
