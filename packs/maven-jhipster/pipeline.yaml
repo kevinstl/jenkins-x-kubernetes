@@ -4,8 +4,6 @@ pipelines:
   release:
     build:
       steps:
-      - sh: mvnw clean deploy
-        name: mvn-deploy
       - sh: echo build done
         name: build-done
       options:
