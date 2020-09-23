@@ -1,39 +1,11 @@
 extends:
   file: ../maven/pipeline.yaml
-#agent:
-#  label: jenkins-maven
-#  image: maven
-#  container: maven
-#pipelines:
-#  release:
-#    pipeline:
-#      agent:
-#        image:
-#          maven
-#      stages:
-#      - name: build
-#        steps:
-#        - sh: mvn clean deploy
-#          name: mvn-deploy
-#        options:
-#          containerOptions:
-#            resources:
-#              limits:
-#                cpu: 1.0
-#                memory: 2048Mi
-#              requests:
-#                cpu: 0.1
-#                memory: 256Mi
 pipelines:
   release:
     build:
       steps:
-#      - sh: skaffold version
-#        name: skaffold-version
-#      - sh: export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml
-#        name: container-build
-#      - sh: jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)
-#        name: post-build
+      - sh: mvnw clean deploy
+        name: mvn-deploy
       - sh: echo build done
         name: build-done
       options:
@@ -45,15 +17,3 @@ pipelines:
             requests:
               cpu: 0.1
               memory: 256Mi
-#    promote:
-#      steps:
-#      - dir: charts/REPLACE_ME_APP_NAME
-#        steps:
-#        - sh: jx step changelog --version v\$(cat ../../VERSION)
-#          name: changelog
-#        - comment: release the helm chart
-#          sh: jx step helm release
-#          name: helm-release
-#        - comment: promote through all 'Auto' promotion Environments
-#          sh: jx promote -b --all-auto --timeout 1h --version \$(cat ../../VERSION)
-#          name: jx-promote
