@@ -1,0 +1,36 @@
+extends:
+  file: ../maven/pipeline.yaml
+agent:
+  label: jenkins-gradle
+  container: gradle
+pipelines:
+  release:
+    build:
+      steps:
+      - sh: echo build done
+        name: build-done
+      options:
+        containerOptions:
+          resources:
+            limits:
+              cpu: 1.0
+              memory: 2048Mi
+            requests:
+              cpu: 0.1
+              memory: 256Mi
+
+#pipelines:
+#  release:
+#    build:
+#      steps:
+#      - sh: echo build done
+#        name: build-done
+#      options:
+#        containerOptions:
+#          resources:
+#            limits:
+#              cpu: 1.0
+#              memory: 2048Mi
+#            requests:
+#              cpu: 0.1
+#              memory: 256Mi
