@@ -1,8 +1,8 @@
 extends:
   file: ../maven/pipeline.yaml
-#agent:
-#  label: jenkins-gradle
-#  container: gradle
+agent:
+  label: jenkins-gradle
+  container: gradle
 pipelines:
   release:
     build:
